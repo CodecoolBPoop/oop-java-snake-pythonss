@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
@@ -7,7 +8,10 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import java.util.List;
 
 
 public class Game extends Pane {
@@ -34,6 +38,14 @@ public class Game extends Pane {
         gameTimer.play();
     }
 
+    private void cleanup() {
+        List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
+        for (GameEntity entity: gameObjs) {
+            entity.destroy();
+        }
+        snake = null;
+    }
+
     public void start() {
         setupInputHandling();
         Globals.getInstance().startGame();
@@ -44,7 +56,7 @@ public class Game extends Pane {
     }
 
     private void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+        for(int i = 0; i < numberOfEnemies; ++i) { new SimpleEnemy(snake); }
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
@@ -55,5 +67,20 @@ public class Game extends Pane {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
+    }
+
+    public void addRestartButton() {
+        Button restartButton = new Button("Restart");
+        HBox buttonBar = new HBox();
+        restartButton.setOnAction(actionEvent -> restartGame());
+        buttonBar.getChildren().add(restartButton);
+        getChildren().add(buttonBar);
+    }
+
+    private void restartGame() {
+        Globals.getInstance().stopGame();
+        cleanup();
+        init();
+        Globals.getInstance().startGame();
     }
 }

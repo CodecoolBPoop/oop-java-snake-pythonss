@@ -1,6 +1,7 @@
 package com.codecool.snake;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -19,6 +20,8 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.show();
 
+
+        game.addRestartButton();
         game.start();
     }
 
@@ -26,4 +29,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         System.out.println("Exiting..");
     }
+
+
+
 }
