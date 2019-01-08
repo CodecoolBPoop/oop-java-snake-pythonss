@@ -45,7 +45,11 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            heading = Utils.directionToVector(direction, -speed);
+            if(speed > 0) {
+                heading = Utils.directionToVector(direction, -speed);
+            } else if(speed < 0) {
+                heading = Utils.directionToVector(direction, Math.abs(speed));
+            }
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
