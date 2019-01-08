@@ -21,7 +21,7 @@ public class Main extends Application {
         primaryStage.show();
 
 
-        game.addRestartButton(primaryStage);
+        game.addRestartButton();
         game.start();
     }
 
@@ -30,12 +30,6 @@ public class Main extends Application {
         System.out.println("Exiting..");
     }
 
-
-    public static void restartGame(Stage primaryStage) {
-        System.out.println("Restarting app!");
-        primaryStage.close();
-        Platform.runLater(() -> new Main().start(new Stage()));
-    }
 
 
 }
