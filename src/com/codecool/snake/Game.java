@@ -11,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-
 import java.util.List;
 
 
@@ -46,8 +44,6 @@ public class Game extends Pane {
             entity.destroy();
         }
         snake = null;
-
-
     }
 
     public void start() {
