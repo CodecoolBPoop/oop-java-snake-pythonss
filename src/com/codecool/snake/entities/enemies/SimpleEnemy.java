@@ -16,6 +16,9 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
+    int speed = 1;
+    double direction = rnd.nextDouble() * 360;
+
 
     public SimpleEnemy() {
         super(10);
@@ -24,17 +27,15 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
-        double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        int speed = 1;
         heading = Utils.directionToVector(direction, speed);
     }
 
     @Override
     public void step() {
         if (isOutOfBounds()) {
-            destroy();
+            heading = Utils.directionToVector(direction, -speed);
         }
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
