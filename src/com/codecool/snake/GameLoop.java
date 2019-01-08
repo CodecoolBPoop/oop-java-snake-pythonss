@@ -3,7 +3,10 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.snakes.Snake;
+import com.codecool.snake.entities.snakes.SnakeHead;
 
 import java.util.List;
 
@@ -46,6 +49,9 @@ public class GameLoop {
                         if(objToCheck.getBoundsInParent().intersects(otherObj.getBoundsInParent())){
                             ((Interactable) objToCheck).apply(otherObj);
                             ((Interactable) otherObj).apply(objToCheck);
+                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead)) {
+                                new SimpleEnemy(snake);
+                            }
                         }
                     }
                 }

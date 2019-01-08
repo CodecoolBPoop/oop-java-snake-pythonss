@@ -13,4 +13,34 @@ public class Utils {
         Point2D heading = new Point2D(length * Math.sin(directionInRadians), - length * Math.cos(directionInRadians));
         return heading;
     }
+
+    public static double getSpawnedEntityX (double snakeHeadX, double spawnedEntityX){
+        double newEntityX =  spawnedEntityX+ 150;
+        if(snakeHeadX == spawnedEntityX) {
+            if(newEntityX > Globals.WINDOW_WIDTH) {
+                newEntityX = Globals.WINDOW_WIDTH - 170;
+                return newEntityX;
+            } else {
+                return newEntityX;
+            }
+        } else {
+            newEntityX = spawnedEntityX;
+            return newEntityX;
+        }
+    }
+
+    public static double getSpawnedEntityY (double snakeHeadY, double spawnedEntityY) {
+        double newEnemyY = spawnedEntityY + 150;
+        if(snakeHeadY == spawnedEntityY) {
+            if(newEnemyY > Globals.WINDOW_HEIGHT) {
+                newEnemyY = Globals.WINDOW_HEIGHT - 170;
+                return newEnemyY;
+            } else {
+                return newEnemyY;
+            }
+        } else {
+            newEnemyY = spawnedEntityY;
+            return newEnemyY;
+        }
+    }
 }

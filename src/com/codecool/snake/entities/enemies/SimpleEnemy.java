@@ -5,6 +5,7 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
@@ -20,12 +21,21 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
     double direction = rnd.nextDouble() * 360;
 
 
-    public SimpleEnemy() {
+    public SimpleEnemy(Snake snake) {
         super(10);
-
+        SnakeHead head= snake.getHead();
+        double headX = head.getX();
+        double headY = head.getY();
         setImage(Globals.getInstance().getImage("SimpleEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+        double randX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+        double randY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+
+        double enemyX = Utils.getSpawnedEntityX(headX, randX);
+        setX(enemyX);
+
+        double enemyY = Utils.getSpawnedEntityY(headY, randY);
+        setY(enemyY);
 
         setRotate(direction);
 
