@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.enemies;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -17,8 +18,8 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     private Point2D heading;
     private static Random rnd = new Random();
-    int speed = 1;
-    double direction = rnd.nextDouble() * 360;
+    double direction;
+    int speed;
 
 
     public SimpleEnemy(Snake snake) {
@@ -37,22 +38,29 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         double enemyY = Utils.getSpawnedEntityY(headY, randY);
         setY(enemyY);
 
+        direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        heading = Utils.directionToVector(direction, speed);
+        speed = 1;
+
+
     }
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
-            if(speed > 0) {
-                heading = Utils.directionToVector(direction, -speed);
-            } else if(speed < 0) {
-                heading = Utils.directionToVector(direction, Math.abs(speed));
+        if(isOutOfBounds()) {
+            if(this.direction >= 180) {
+                this.direction = direction -180;
+                heading = Utils.directionToVector(this.direction, this.speed);
+            } else {
+                this.direction = direction + 180;
+                heading = Utils.directionToVector(this.direction, this.speed);
             }
         }
+        heading = Utils.directionToVector(this.direction, this.speed);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+
     }
 
     @Override
