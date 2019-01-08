@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 public class Game extends Pane {
@@ -34,8 +35,6 @@ public class Game extends Pane {
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
-
-        addRestartButton();
     }
 
     public void start() {
@@ -55,21 +54,17 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
     }
 
-    private void addRestartButton() {
-        Button restartButton = new Button("Restart");
-        HBox buttonBar = new HBox();
-        restartButton.setOnAction(actionEvent -> restartGame());
-        buttonBar.getChildren().add(restartButton);
-        getChildren().add(buttonBar);
-    }
-
-    private void restartGame() {
-        //init();
-    }
-
     private void setupInputHandling() {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
+    }
+
+    public void addRestartButton(Stage primaryStage) {
+        Button restartButton = new Button("Restart");
+        HBox buttonBar = new HBox();
+        restartButton.setOnAction(actionEvent -> Main.restartGame(primaryStage));
+        buttonBar.getChildren().add(restartButton);
+        getChildren().add(buttonBar);
     }
 }
