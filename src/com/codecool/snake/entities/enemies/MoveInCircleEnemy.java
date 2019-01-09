@@ -12,10 +12,6 @@ import javafx.geometry.Point2D;
 import java.util.Random;
 
 public class MoveInCircleEnemy extends Enemy implements Animatable, Interactable {
-    private Point2D heading;
-    private static Random rnd = new Random();
-    private double direction;
-    private double speed;
     private double angle;
     private double enemyX;
     private double enemyY;
@@ -36,8 +32,6 @@ public class MoveInCircleEnemy extends Enemy implements Animatable, Interactable
         setX(enemyX);
 
         setY(enemyY);
-
-        speed = 0.5;
     }
 
     @Override
@@ -47,7 +41,6 @@ public class MoveInCircleEnemy extends Enemy implements Animatable, Interactable
         this.enemyY = origoY + radius * Math.sin(angle);
         setX(enemyX);
         setY(enemyY);
-
     }
 
     @Override
