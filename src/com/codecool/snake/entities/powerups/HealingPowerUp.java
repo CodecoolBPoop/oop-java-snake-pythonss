@@ -14,7 +14,7 @@ public class HealingPowerUp extends SimplePowerUp {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             Snake snake = ((SnakeHead)entity).getSnake();
-            snake.changeHealth(5);
+            snake.changeHealth(-5);
             System.out.println(getMessage());
             destroy();
         }

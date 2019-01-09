@@ -40,12 +40,23 @@ public class GameLoop {
                 System.out.println("ammo: " + snake.getAmmo());
             }
             snake.step();
+            Globals.getInstance().healthCounter();
+
+
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
                 }
             }
             checkCollisions();
+
+            Globals.getInstance().healthCurrent = snake.getHealth();
+
+
+
+
+
         }
 
         Globals.getInstance().display.frameFinished();

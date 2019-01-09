@@ -14,7 +14,6 @@ public class Snake implements Animatable {
     private int ammo = 0;
     private int weaponCooldown = 30;
 
-
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
@@ -58,12 +57,18 @@ public class Snake implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        if (health != 100) {
-            health += diff;
+        if (health < 101) {
+            health -= diff;
         } else {
             health = 100;
         }
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
