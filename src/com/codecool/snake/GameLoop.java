@@ -30,7 +30,11 @@ public class GameLoop {
 
     public void step() {
         if(running) {
-            if (InputHandler.getInstance().isKeyPressed(KeyCode.UP) && snake.getAmmo() > 0) new Laser(snake);
+            if (InputHandler.getInstance().isKeyPressed(KeyCode.UP) && snake.getAmmo() > 0 && snake.getWeaponCooldown() == 0) {
+                new Laser(snake);
+                snake.setWeaponCooldown(60);
+                snake.setAmmo(snake.getAmmo() - 1);
+            }
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {

@@ -23,7 +23,7 @@ public class Snake implements Animatable {
         this.weaponCooldown = weaponCooldown;
     }
 
-    private int weaponCooldown = 10;
+    private int weaponCooldown = 60;
 
     public int getAmmo() {
         return ammo;
@@ -54,6 +54,8 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
+
+        if (weaponCooldown > 0) weaponCooldown--;
     }
 
     private SnakeControl getUserInput() {
