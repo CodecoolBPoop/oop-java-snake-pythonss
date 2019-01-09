@@ -17,10 +17,16 @@ public class Globals {
     private Resources resources;
 
     int healthCurrent = 100;
+    int ammoCurrent = 0;
 
 
     public void healthCounter() {
     game.updateHealth();
+    }
+
+
+    public void ammoCounter(){
+        game.updateAmmo();
     }
 
     public static Globals getInstance() {

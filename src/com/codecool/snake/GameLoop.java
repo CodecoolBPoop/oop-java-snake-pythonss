@@ -37,10 +37,13 @@ public class GameLoop {
                 new Laser(snake);
                 snake.setWeaponCooldown(30);
                 snake.setAmmo(snake.getAmmo() - 1);
+                Globals.getInstance().ammoCounter();
                 System.out.println("ammo: " + snake.getAmmo());
             }
             snake.step();
             Globals.getInstance().healthCounter();
+            Globals.getInstance().healthCurrent = snake.getHealth();
+            Globals.getInstance().ammoCurrent = snake.getAmmo();
 
 
 
@@ -51,7 +54,6 @@ public class GameLoop {
             }
             checkCollisions();
 
-            Globals.getInstance().healthCurrent = snake.getHealth();
 
 
 

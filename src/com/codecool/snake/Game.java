@@ -21,6 +21,7 @@ public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
     private Text healthButton;
+    private Text ammoBar;
 
     public Game() {
         Globals.getInstance().game = this;
@@ -84,6 +85,22 @@ public class Game extends Pane {
         String currentHealthString = Integer.toString(currentHealth);
         healthButton.setText(currentHealthString);
 
+    }
+
+    public void updateAmmo(){
+        int currentAmmo = snake.getAmmo();
+        String currentAmmoString = Integer.toString(currentAmmo);
+        ammoBar.setText(currentAmmoString);
+
+    }
+
+    public void addAmmoBar(){
+        ammoBar = new Text("0");
+        HBox ammo = new HBox();
+        ammo.getChildren().add(ammoBar);
+        getChildren().add(ammo);
+        ammoBar.setTranslateX(70);
+        ammoBar.setTranslateY(15);
     }
 
 
