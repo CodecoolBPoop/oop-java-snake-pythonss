@@ -9,6 +9,7 @@ import com.codecool.snake.entities.powerups.AmmoPowerUp;
 import com.codecool.snake.entities.powerups.HealingPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 
+import com.codecool.snake.entities.projectiles.Laser;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
 
@@ -46,9 +47,9 @@ public class SnakeHead extends GameEntity implements Interactable {
             System.out.println(getMessage());
             snake.changeHealth(((Enemy) entity).getDamage());
         }
-        if(!(entity instanceof HealingPowerUp) && !(entity instanceof AmmoPowerUp)){
+        if(!(entity instanceof HealingPowerUp) && !(entity instanceof AmmoPowerUp) && !(entity instanceof Laser)){
             System.out.println(getMessage());
-            snake.addPart(4);
+            snake.addPart(1);
         }
     }
 

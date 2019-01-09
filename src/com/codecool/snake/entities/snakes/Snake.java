@@ -23,7 +23,7 @@ public class Snake implements Animatable {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
 
-        addPart(4);
+        addPart(2);
     }
 
 
