@@ -32,8 +32,9 @@ public class GameLoop {
         if(running) {
             if (InputHandler.getInstance().isKeyPressed(KeyCode.UP) && snake.getAmmo() > 0 && snake.getWeaponCooldown() == 0) {
                 new Laser(snake);
-                snake.setWeaponCooldown(60);
+                snake.setWeaponCooldown(30);
                 snake.setAmmo(snake.getAmmo() - 1);
+                System.out.println("ammo: " + snake.getAmmo());
             }
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {

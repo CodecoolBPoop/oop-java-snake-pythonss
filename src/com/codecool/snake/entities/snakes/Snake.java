@@ -5,33 +5,16 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
-
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.input.KeyCode;
-
 
 public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
-    private int ammo = 20;
+    private int ammo = 100000000;
+    private int weaponCooldown = 30;
 
-    public int getWeaponCooldown() {
-        return weaponCooldown;
-    }
 
-    public void setWeaponCooldown(int weaponCooldown) {
-        this.weaponCooldown = weaponCooldown;
-    }
-
-    private int weaponCooldown = 60;
-
-    public int getAmmo() {
-        return ammo;
-    }
-
-    public void setAmmo(int ammo) {
-        this.ammo = ammo;
-    }
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -105,4 +88,21 @@ public class Snake implements Animatable {
     public SnakeHead getHead() {
         return head;
     }
+
+    public int getWeaponCooldown() {
+        return weaponCooldown;
+    }
+
+    public void setWeaponCooldown(int weaponCooldown) {
+        this.weaponCooldown = weaponCooldown;
+    }
+
+    public int getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
+
 }

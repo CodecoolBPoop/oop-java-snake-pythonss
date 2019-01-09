@@ -43,8 +43,8 @@ public class Laser extends GameEntity implements Animatable, Interactable {
         if (isOutOfBounds()) destroy();
 
         Point2D heading = Utils.directionToVector(direction, speed);
-        System.out.println(getY());
-        System.out.println(getX());
+        //System.out.println(getY());
+        //System.out.println(getX());
         setY(getY() + heading.getY());
         setX(getX() + heading.getX());
 
