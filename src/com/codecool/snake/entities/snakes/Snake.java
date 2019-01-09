@@ -17,14 +17,12 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
-
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
 
         addPart(2);
     }
-
 
     public void step() {
         SnakeControl turnDir = getUserInput();
@@ -67,8 +65,6 @@ public class Snake implements Animatable {
     public int getHealth() {
         return health;
     }
-
-
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
