@@ -15,8 +15,8 @@ public class Utils {
     }
 
     public static double getSpawnedEntityX (double snakeHeadX, double spawnedEntityX){
-        double newEntityX =  spawnedEntityX+ 150;
         if(snakeHeadX == spawnedEntityX) {
+            double newEntityX =  spawnedEntityX+ 150;
             if(newEntityX > Globals.WINDOW_WIDTH) {
                 newEntityX = Globals.WINDOW_WIDTH - 170;
                 return newEntityX;
@@ -24,23 +24,22 @@ public class Utils {
                 return newEntityX;
             }
         } else {
-            newEntityX = spawnedEntityX;
-            return newEntityX;
+            return spawnedEntityX;
         }
     }
 
+
     public static double getSpawnedEntityY (double snakeHeadY, double spawnedEntityY) {
-        double newEnemyY = spawnedEntityY + 150;
         if(snakeHeadY == spawnedEntityY) {
-            if(newEnemyY > Globals.WINDOW_HEIGHT) {
-                newEnemyY = Globals.WINDOW_HEIGHT - 170;
-                return newEnemyY;
+            double newEntityY = spawnedEntityY + 150;
+            if(newEntityY > Globals.WINDOW_HEIGHT) {
+                newEntityY = Globals.WINDOW_HEIGHT - 170;
+                return newEntityY;
             } else {
-                return newEnemyY;
+                return newEntityY;
             }
         } else {
-            newEnemyY = spawnedEntityY;
-            return newEnemyY;
+            return spawnedEntityY;
         }
     }
 }
