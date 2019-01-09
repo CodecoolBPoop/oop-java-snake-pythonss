@@ -102,4 +102,8 @@ public class Snake implements Animatable {
     public void setAmmo(int ammo) {
         this.ammo = ammo;
     }
+
+    public void changeAmmo(int amount) {
+        this.ammo += amount;
+    }
 }
