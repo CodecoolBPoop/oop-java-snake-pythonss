@@ -5,6 +5,8 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
@@ -18,19 +20,18 @@ import javafx.geometry.Point2D;
 
 public class Laser extends GameEntity implements Animatable, Interactable {
 
-    private Point2D heading;
     private double direction;
-    private int speed;
+    private float speed;
 
     public Laser(Snake snake) {
         System.out.println("new lazor");
-        Globals.getInstance().getImage("Laser");
+        setImage(Globals.getInstance().getImage("Laser"));
         SnakeHead head = snake.getHead();
 
         setX(head.getX());
         setY(head.getY());
 
-        this.speed = 2;
+        speed = 10;
         direction = snake.getHead().getRotate();
         setRotate(direction);
 
@@ -39,9 +40,11 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     @Override
     public void step() {
 
-       // if (isOutOfBounds()) destroy();
+        if (isOutOfBounds()) destroy();
 
-        heading = Utils.directionToVector(direction, speed);
+        Point2D heading = Utils.directionToVector(direction, speed);
+        System.out.println(getY());
+        System.out.println(getX());
         setY(getY() + heading.getY());
         setX(getX() + heading.getX());
 
@@ -49,7 +52,10 @@ public class Laser extends GameEntity implements Animatable, Interactable {
 
     @Override
     public void apply(GameEntity entity) {
-
+        if (entity instanceof Enemy) {
+            entity.destroy();
+            destroy();
+        }
     }
 
     @Override
