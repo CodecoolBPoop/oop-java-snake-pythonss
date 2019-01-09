@@ -5,8 +5,12 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
+import com.codecool.snake.entities.projectiles.Laser;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.eventhandler.InputHandler;
+import javafx.scene.input.KeyCode;
+
 
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class GameLoop {
 
     public void step() {
         if(running) {
+            if (InputHandler.getInstance().isKeyPressed(KeyCode.UP)) new Laser(snake);
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {

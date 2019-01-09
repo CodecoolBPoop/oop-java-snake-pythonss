@@ -8,6 +8,10 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
+import com.codecool.snake.eventhandler.InputHandler;
+
+import com.sun.javafx.geom.Vec2d;
+import javafx.scene.input.KeyCode;
 
 import javafx.geometry.Point2D;
 
@@ -19,13 +23,14 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     private int speed;
 
     public Laser(Snake snake) {
+        System.out.println("new lazor");
         Globals.getInstance().getImage("Laser");
         SnakeHead head = snake.getHead();
 
         setX(head.getX());
         setY(head.getY());
 
-        this.speed = 5;
+        this.speed = 2;
         direction = snake.getHead().getRotate();
         setRotate(direction);
 
@@ -34,7 +39,7 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     @Override
     public void step() {
 
-        if (isOutOfBounds()) destroy();
+       // if (isOutOfBounds()) destroy();
 
         heading = Utils.directionToVector(direction, speed);
         setY(getY() + heading.getY());
