@@ -15,7 +15,7 @@ public class ChasingEnemy extends Enemy implements Interactable {
 
     public ChasingEnemy() {
         super(10);
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        setImage(Globals.getInstance().getImage("ChasingEnemy"));
 
         double enemyX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
         setX(enemyX);
@@ -23,7 +23,7 @@ public class ChasingEnemy extends Enemy implements Interactable {
         double enemyY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
         setY(enemyY);
 
-        speed = 0.7;
+        speed = 1;
 
     }
 
