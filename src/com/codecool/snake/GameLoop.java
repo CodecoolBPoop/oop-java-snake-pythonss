@@ -6,6 +6,7 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AmmoPowerUp;
+import com.codecool.snake.entities.powerups.HealingPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.projectiles.Laser;
 import com.codecool.snake.entities.snakes.Snake;
@@ -65,7 +66,14 @@ public class GameLoop {
                             (objToCheck instanceof Laser && otherObj instanceof SimpleEnemy) | (objToCheck instanceof  SimpleEnemy && otherObj instanceof Laser)) {
                                 new SimpleEnemy(snake);
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
-                                new AmmoPowerUp(snake);
+                                int rand = (int)(Math.random()* 9 + 1);
+                                if (rand > 2) {
+                                    new SimplePowerUp(snake);
+                                } else if (rand == 2) {
+                                    new HealingPowerUp(snake);
+                                } else if (rand == 1) {
+                                    new AmmoPowerUp(snake);
+                                }
                             }
                         }
                     }

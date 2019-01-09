@@ -11,7 +11,7 @@ import javafx.scene.input.KeyCode;
 public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
-    private int ammo = 100000000;
+    private int ammo = 0;
     private int weaponCooldown = 30;
 
 
@@ -58,7 +58,11 @@ public class Snake implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        health += diff;
+        if (health != 100) {
+            health += diff;
+        } else {
+            health = 100;
+        }
     }
 
     private void checkForGameOverConditions() {
