@@ -1,6 +1,7 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.ChasingEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
@@ -29,7 +30,7 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
+        spawnEnemies(4, 1);
         spawnPowerUps(4);
 
         GameLoop gameLoop = new GameLoop(snake);
@@ -55,8 +56,9 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
-        for(int i = 0; i < numberOfEnemies; ++i) { new SimpleEnemy(snake); }
+    private void spawnEnemies(int numberOfSimpleEnemies, int numberOfChasingEnemy) {
+        for(int i = 0; i < numberOfSimpleEnemies; ++i) { new SimpleEnemy(snake); }
+        for(int i = 0; i < numberOfChasingEnemy; ++i) { new ChasingEnemy(); }
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {

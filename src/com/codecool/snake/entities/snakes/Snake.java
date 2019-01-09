@@ -11,7 +11,7 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private static final float speed = 1;
     private int health = 100;
 
     private SnakeHead head;
@@ -25,8 +25,6 @@ public class Snake implements Animatable {
         addPart(4);
     }
 
-
-
     public void step() {
         SnakeControl turnDir = getUserInput();
         head.updateRotation(turnDir, speed);
@@ -37,7 +35,7 @@ public class Snake implements Animatable {
         body.doPendingModifications();
     }
 
-    private SnakeControl getUserInput() {
+    public SnakeControl getUserInput() {
         SnakeControl turnDir = SnakeControl.INVALID;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.LEFT)) turnDir = SnakeControl.TURN_LEFT;
         if(InputHandler.getInstance().isKeyPressed(KeyCode.RIGHT)) turnDir = SnakeControl.TURN_RIGHT;
