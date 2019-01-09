@@ -84,4 +84,8 @@ public class Snake implements Animatable {
     public SnakeHead getHead() {
         return head;
     }
+
+    public int getHealth() {
+        return health;
+    }
 }

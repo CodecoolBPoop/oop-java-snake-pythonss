@@ -27,8 +27,6 @@ public class SimplePowerUp extends GameEntity implements Interactable {
 
         double powerUpY = Utils.getSpawnedEntityY(headY, randY);
         setY(powerUpY);
-
-
     }
 
     @Override
