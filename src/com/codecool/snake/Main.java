@@ -22,6 +22,7 @@ public class Main extends Application {
 
 
         game.addRestartButton();
+        game.addHealthBar();
         game.start();
     }
 

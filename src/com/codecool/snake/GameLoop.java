@@ -4,11 +4,12 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
-import com.codecool.snake.entities.snakes.SnakeHead;
 
+import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.List;
 
 public class GameLoop {
@@ -28,12 +29,22 @@ public class GameLoop {
     public void step() {
         if(running) {
             snake.step();
+            Globals.getInstance().healthCounter();
+
+
+
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
                 }
             }
             checkCollisions();
+
+            Globals.getInstance().healthCurrent = snake.getHealth();
+
+
+
+
         }
 
         Globals.getInstance().display.frameFinished();

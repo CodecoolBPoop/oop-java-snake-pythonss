@@ -11,13 +11,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+
 import java.util.List;
 
 
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
-
+    private Button healthButton;
 
     public Game() {
         Globals.getInstance().game = this;
@@ -75,6 +77,22 @@ public class Game extends Pane {
         restartButton.setOnAction(actionEvent -> restartGame());
         buttonBar.getChildren().add(restartButton);
         getChildren().add(buttonBar);
+    }
+    public void updateHealth() {
+        int currentHealth = Globals.getInstance().healthCurrent;
+        String currentHealthString = Integer.toString(currentHealth);
+        healthButton.setText(currentHealthString);
+
+    }
+
+
+
+    public void addHealthBar() {
+        healthButton = new Button("100");
+        HBox healthBar = new HBox();
+        healthBar.getChildren().add(healthButton);
+        getChildren().add(healthBar);
+        healthButton.setTranslateX(70);
     }
 
     private void restartGame() {
