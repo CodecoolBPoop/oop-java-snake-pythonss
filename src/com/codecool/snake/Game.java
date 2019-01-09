@@ -60,7 +60,7 @@ public class Game extends Pane {
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp(snake);
     }
 
     private void setupInputHandling() {

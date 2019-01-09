@@ -53,7 +53,7 @@ public class GameLoop {
                             if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead)) {
                                 new SimpleEnemy(snake);
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
-                                new SimplePowerUp();
+                                new SimplePowerUp(snake);
                             }
                         }
                     }
