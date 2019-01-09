@@ -15,6 +15,16 @@ public class Snake implements Animatable {
     private int health = 100;
     private int ammo = 20;
 
+    public int getWeaponCooldown() {
+        return weaponCooldown;
+    }
+
+    public void setWeaponCooldown(int weaponCooldown) {
+        this.weaponCooldown = weaponCooldown;
+    }
+
+    private int weaponCooldown = 10;
+
     public int getAmmo() {
         return ammo;
     }
