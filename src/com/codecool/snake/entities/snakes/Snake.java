@@ -13,6 +13,15 @@ import javafx.scene.input.KeyCode;
 public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
+    private int ammo = 20;
+
+    public int getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(int ammo) {
+        this.ammo = ammo;
+    }
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;

@@ -54,7 +54,8 @@ public class GameLoop {
                         if(objToCheck.getBoundsInParent().intersects(otherObj.getBoundsInParent())){
                             ((Interactable) objToCheck).apply(otherObj);
                             ((Interactable) otherObj).apply(objToCheck);
-                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead)) {
+                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead) |
+                            (objToCheck instanceof Laser && otherObj instanceof SimpleEnemy) | (objToCheck instanceof  SimpleEnemy && otherObj instanceof Laser)) {
                                 new SimpleEnemy(snake);
                             }
                         }
