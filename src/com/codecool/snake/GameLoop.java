@@ -6,8 +6,12 @@ import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.projectiles.Laser;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import com.codecool.snake.eventhandler.InputHandler;
+import javafx.scene.input.KeyCode;
+
 
 import java.util.List;
 
@@ -27,6 +31,12 @@ public class GameLoop {
 
     public void step() {
         if(running) {
+            if (InputHandler.getInstance().isKeyPressed(KeyCode.UP) && snake.getAmmo() > 0 && snake.getWeaponCooldown() == 0) {
+                new Laser(snake);
+                snake.setWeaponCooldown(30);
+                snake.setAmmo(snake.getAmmo() - 1);
+                System.out.println("ammo: " + snake.getAmmo());
+            }
             snake.step();
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
@@ -50,7 +60,8 @@ public class GameLoop {
                         if(objToCheck.getBoundsInParent().intersects(otherObj.getBoundsInParent())){
                             ((Interactable) objToCheck).apply(otherObj);
                             ((Interactable) otherObj).apply(objToCheck);
-                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead)) {
+                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead) |
+                            (objToCheck instanceof Laser && otherObj instanceof SimpleEnemy) | (objToCheck instanceof  SimpleEnemy && otherObj instanceof Laser)) {
                                 new SimpleEnemy(snake);
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
                                 new SimplePowerUp(snake);
