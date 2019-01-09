@@ -34,6 +34,12 @@ public class Laser extends GameEntity implements Animatable, Interactable {
     @Override
     public void step() {
 
+        if (isOutOfBounds()) destroy();
+
+        heading = Utils.directionToVector(direction, speed);
+        setY(getY() + heading.getY());
+        setX(getX() + heading.getX());
+
     }
 
     @Override
