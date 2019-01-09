@@ -19,16 +19,15 @@ public class MoveInCircleEnemy extends Enemy implements Animatable, Interactable
     private double angle;
     private double enemyX;
     private double enemyY;
-    private double radius = Globals.WINDOW_HEIGHT / 2 - 200;
+    private double radius = Globals.WINDOW_HEIGHT / 2 - 100;
     private double origoY = Globals.WINDOW_HEIGHT / 2;
     private double origoX = Globals.WINDOW_WIDTH / 2;
 
 
-    public MoveInCircleEnemy() {
+    public MoveInCircleEnemy(int direction) {
         super(10);
         setImage(Globals.getInstance().getImage("InCircleEnemy"));
 
-        direction = rnd.nextDouble() * 360;
         angle = Math.toRadians(direction);
 
         enemyX = origoX + radius * Math.cos(angle);
