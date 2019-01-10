@@ -6,7 +6,9 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
@@ -122,7 +124,6 @@ public class Snake implements Animatable {
 
     public void showGameOverAlert() {
         Alert deadAlert = new Alert(Alert.AlertType.INFORMATION);
-
         int globalScore = Globals.getInstance().getGlobalScore();
         String globalScoreString = Integer.toString(globalScore);
         deadAlert.setTitle("You Died");
@@ -133,5 +134,6 @@ public class Snake implements Animatable {
         Stage stage = (Stage) deadAlert.getDialogPane().getScene().getWindow();
         stage.setAlwaysOnTop(true);
     }
+
 
 }

@@ -9,13 +9,19 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class Game extends Pane {
@@ -123,7 +129,7 @@ public class Game extends Pane {
         healthButton.setTranslateX(70);
     }
 
-    private void restartGame() {
+    public void restartGame() {
         System.out.println("restart");
         Globals.getInstance().stopGame();
         cleanup();
@@ -136,5 +142,4 @@ public class Game extends Pane {
                 BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
                 BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
-
 }
