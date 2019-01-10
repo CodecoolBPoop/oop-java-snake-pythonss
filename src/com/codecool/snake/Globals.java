@@ -51,6 +51,7 @@ public class Globals {
         resources.addImage("Laser", new Image("lazzor.png"));
         resources.addImage("ChasingEnemy", new Image("curly_1.png"));
         resources.addImage("InCircleEnemy", new Image("java.png"));
+        resources.addImage("Background", new Image("backgroundWhite.jpg"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
