@@ -8,13 +8,17 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
+import javafx.application.Platform;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class Game extends Pane {
@@ -119,4 +123,5 @@ public class Game extends Pane {
         init();
         Globals.getInstance().startGame();
     }
+
 }

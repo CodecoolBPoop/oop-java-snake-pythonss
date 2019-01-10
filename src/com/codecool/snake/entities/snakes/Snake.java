@@ -6,7 +6,10 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
+import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
+
+import java.util.Optional;
 
 public class Snake implements Animatable {
     private static final float speed = 2;
@@ -16,8 +19,6 @@ public class Snake implements Animatable {
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
-
-
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
@@ -59,7 +60,7 @@ public class Snake implements Animatable {
     public void changeHealth(int diff) {
         if (health < 101) {
             health -= diff;
-        } else {
+        } else if (health > 100) {
             health = 100;
         }
     }
@@ -69,10 +70,10 @@ public class Snake implements Animatable {
     }
 
 
-
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
+            showGameOverAlert();
             Globals.getInstance().stopGame();
         }
     }
@@ -115,4 +116,16 @@ public class Snake implements Animatable {
     public void changeAmmo(int amount) {
         this.ammo += amount;
     }
+
+    public void showGameOverAlert() {
+        Alert deadAlert = new Alert(Alert.AlertType.INFORMATION);
+        int globalScore = Globals.getInstance().getGlobalScore();
+        String globalScoreString = Integer.toString(globalScore);
+        deadAlert.setTitle("You DED");
+        deadAlert.setHeaderText("DEAD");
+        deadAlert.setContentText("Your score is: " + globalScoreString);
+        deadAlert.show();
+
+    }
+
 }

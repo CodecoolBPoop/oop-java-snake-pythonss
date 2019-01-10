@@ -79,6 +79,8 @@ public class GameLoop {
                             (objToCheck instanceof Laser && otherObj instanceof SimpleEnemy) | (objToCheck instanceof  SimpleEnemy && otherObj instanceof Laser)) {
                                 new SimpleEnemy(snake);
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
+                                Globals.getInstance().globalScore += 1;
+                                System.out.println(Globals.getInstance().globalScore);
                                 int rand = (int)(Math.random()* 9 + 1);
                                 if (rand > 2) {
                                     new SimplePowerUp(snake);

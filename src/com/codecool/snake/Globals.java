@@ -18,6 +18,7 @@ public class Globals {
 
     int healthCurrent = 100;
     int ammoCurrent = 0;
+    int globalScore = 0;
 
 
     public void healthCounter() {
@@ -48,6 +49,10 @@ public class Globals {
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
+
+    public int getGlobalScore() {
+        return globalScore;
+    }
 
     public void startGame() { gameLoop.start(); }
 
