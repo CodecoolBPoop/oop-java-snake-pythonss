@@ -16,7 +16,7 @@ public class AmmoPowerUp extends SimplePowerUp {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             Snake snake = ((SnakeHead)entity).getSnake();
-            snake.changeAmmo(1);
+            snake.changeAmmo(5);
             Globals.getInstance().ammoCounter();
             System.out.println(snake.getAmmo());
             System.out.println(getMessage());

@@ -20,7 +20,7 @@ public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
     private int ammo = 10;
-    private int weaponCooldown = 30;
+    private int weaponCooldown = 0;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
