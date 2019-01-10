@@ -90,7 +90,13 @@ public class GameLoop {
                                     double direction = rnd.nextDouble() * 360;
                                     new MoveInCircleEnemy(direction);
                                 } else {
-                                    new ChasingEnemy();
+                                    Random rnd = new Random();
+                                    int randNum = rnd.nextInt((100 - 1) + 1) + 1;
+                                    if(randNum <= 50) {
+                                        new ChasingEnemy();
+                                    } else {
+                                        new SimpleEnemy(snake);
+                                    }
                                 }
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
                                 Globals.getInstance().globalScore += 1;
