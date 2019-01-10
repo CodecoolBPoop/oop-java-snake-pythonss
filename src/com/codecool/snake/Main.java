@@ -21,9 +21,9 @@ public class Main extends Application {
         primaryStage.show();
 
 
-        game.addRestartButton();
         game.addHealthBar();
         game.addAmmoBar();
+        game.addRestartButton();
         game.start();
     }
 

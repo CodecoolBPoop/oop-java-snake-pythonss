@@ -110,7 +110,7 @@ public class Game extends Pane {
     }
 
     public void addAmmoBar(){
-        ammoBar = new Text("Ammo: 0");
+        ammoBar = new Text("Ammo: " + snake.getAmmo());
         HBox ammo = new HBox();
         ammo.getChildren().add(ammoBar);
         getChildren().add(ammo);
@@ -121,7 +121,7 @@ public class Game extends Pane {
 
 
     public void addHealthBar() {
-        healthButton = new Text("Health: 100");
+        healthButton = new Text("Health: " + snake.getAmmo());
         HBox healthBar = new HBox();
         healthBar.getChildren().add(healthButton);
         getChildren().add(healthBar);
@@ -129,6 +129,7 @@ public class Game extends Pane {
     }
 
     private void restartGame() {
+        System.out.println("restart");
         Globals.getInstance().stopGame();
         cleanup();
         init();
