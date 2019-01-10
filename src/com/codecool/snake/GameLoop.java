@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.ChasingEnemy;
 import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AmmoPowerUp;
@@ -50,6 +51,8 @@ public class GameLoop {
             for (GameEntity gameObject : Globals.getInstance().display.getObjectList()) {
                 if (gameObject instanceof Animatable) {
                     ((Animatable) gameObject).step();
+                } else if (gameObject instanceof ChasingEnemy) {
+                    ((ChasingEnemy) gameObject).step(snake);
                 }
             }
             checkCollisions();
@@ -75,9 +78,9 @@ public class GameLoop {
                         if(objToCheck.getBoundsInParent().intersects(otherObj.getBoundsInParent())){
                             ((Interactable) objToCheck).apply(otherObj);
                             ((Interactable) otherObj).apply(objToCheck);
-                            if((objToCheck instanceof SnakeHead && otherObj instanceof SimpleEnemy) | (objToCheck instanceof SimpleEnemy && otherObj instanceof SnakeHead) |
-                            (objToCheck instanceof Laser && otherObj instanceof SimpleEnemy) | (objToCheck instanceof  SimpleEnemy && otherObj instanceof Laser)) {
-                                new SimpleEnemy(snake);
+                            if((objToCheck instanceof SnakeHead && otherObj instanceof Enemy) | (objToCheck instanceof Enemy && otherObj instanceof SnakeHead) |
+                            (objToCheck instanceof Laser && otherObj instanceof Enemy) | (objToCheck instanceof  Enemy && otherObj instanceof Laser)) {
+                                new ChasingEnemy();
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
                                 Globals.getInstance().globalScore += 1;
                                 System.out.println(Globals.getInstance().globalScore);

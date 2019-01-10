@@ -15,7 +15,6 @@ import javafx.geometry.Point2D;
 
 public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
-    private Point2D heading;
     private static Random rnd = new Random();
     private double direction;
     private int speed;
@@ -45,6 +44,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     @Override
     public void step() {
+        Point2D heading;
         if(isOutOfBounds()) {
             if(this.direction >= 180) {
                 this.direction = direction -180;
