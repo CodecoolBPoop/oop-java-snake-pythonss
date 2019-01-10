@@ -98,19 +98,19 @@ public class Game extends Pane {
     public void updateHealth() {
         int currentHealth = Globals.getInstance().healthCurrent;
         String currentHealthString = Integer.toString(currentHealth);
-        healthButton.setText(currentHealthString);
+        healthButton.setText("Health: " + currentHealthString);
 
     }
 
     public void updateAmmo(){
         int currentAmmo = snake.getAmmo();
         String currentAmmoString = Integer.toString(currentAmmo);
-        ammoBar.setText(currentAmmoString);
+        ammoBar.setText("Ammo: " + currentAmmoString);
 
     }
 
     public void addAmmoBar(){
-        ammoBar = new Text("0");
+        ammoBar = new Text("Ammo: 0");
         HBox ammo = new HBox();
         ammo.getChildren().add(ammoBar);
         getChildren().add(ammo);
@@ -121,7 +121,7 @@ public class Game extends Pane {
 
 
     public void addHealthBar() {
-        healthButton = new Text("100");
+        healthButton = new Text("Health: 100");
         HBox healthBar = new HBox();
         healthBar.getChildren().add(healthButton);
         getChildren().add(healthBar);
