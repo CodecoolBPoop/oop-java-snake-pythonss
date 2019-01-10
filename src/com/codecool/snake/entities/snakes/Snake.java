@@ -141,10 +141,8 @@ public class Snake implements Animatable {
         Platform.runLater(() -> {
             Optional<ButtonType> result = deadAlert.showAndWait();
 
-            if (result.get() == restartButton) {
-                Globals.getInstance().stopGame();
-                Game.cleanup();
-                Globals.getInstance().startGame();
+            if (result.isPresent() && result.get() == restartButton) {
+                Globals.getInstance().game.restartGame();
             } else {
 
             }
