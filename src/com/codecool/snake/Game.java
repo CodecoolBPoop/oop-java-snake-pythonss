@@ -4,24 +4,18 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.ChasingEnemy;
 import com.codecool.snake.entities.enemies.MoveInCircleEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.GoldenSnitch;
-import com.codecool.snake.entities.powerups.HealingPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.util.List;
-import java.util.Optional;
 
 
 public class Game extends Pane {
