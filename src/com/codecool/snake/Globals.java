@@ -41,13 +41,16 @@ public class Globals {
 
     public void setupResources() {
         resources = new Resources();
-        resources.addImage("SnakeHead", new Image("snake_head.png"));
-        resources.addImage("SnakeBody", new Image("snake_body.png"));
-        resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
-        resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
+        resources.addImage("SnakeHead", new Image("head.png"));
+        resources.addImage("SnakeBody", new Image("body.png"));
+        resources.addImage("SimpleEnemy", new Image("curly.png"));
+        resources.addImage("HealthPickup", new Image("pharm.png"));
+        resources.addImage("AmmoPickup", new Image("pycharm.png"));
+        resources.addImage("SimplePickup", new Image("python.png"));
+        resources.addImage("GoldenSnitch", new Image("goldd.png"));
         resources.addImage("Laser", new Image("lazzor.png"));
-        resources.addImage("ChasingEnemy", new Image("chasing_enemy.png"));
-        resources.addImage("InCircleEnemy", new Image("circle_enemy.png"));
+        resources.addImage("ChasingEnemy", new Image("curly_1.png"));
+        resources.addImage("InCircleEnemy", new Image("java.png"));
     }
 
     public Image getImage(String name) { return resources.getImage(name); }
