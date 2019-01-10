@@ -69,7 +69,7 @@ public class Game extends Pane {
     }
 
     private void spawnEnemies(int numberOfSimpleEnemies, int numberOfChasingEnemy, int numberOfMoveInCircleEnemy) {
-        int direction = 0;
+        double direction = 0;
         for(int i = 0; i < numberOfSimpleEnemies; ++i) { new SimpleEnemy(snake); }
         for(int i = 0; i < numberOfChasingEnemy; ++i) { new ChasingEnemy(); }
         for(int i = 0; i < numberOfMoveInCircleEnemy; ++i) {

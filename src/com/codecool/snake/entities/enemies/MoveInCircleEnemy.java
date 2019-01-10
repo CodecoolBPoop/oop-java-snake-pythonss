@@ -20,7 +20,7 @@ public class MoveInCircleEnemy extends Enemy implements Animatable, Interactable
     private double origoX = Globals.WINDOW_WIDTH / 2;
 
 
-    public MoveInCircleEnemy(int direction) {
+    public MoveInCircleEnemy(double direction) {
         super(10);
         setImage(Globals.getInstance().getImage("InCircleEnemy"));
 
