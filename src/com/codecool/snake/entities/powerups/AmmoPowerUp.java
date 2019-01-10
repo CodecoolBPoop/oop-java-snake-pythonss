@@ -9,6 +9,7 @@ public class AmmoPowerUp extends SimplePowerUp {
 
     public AmmoPowerUp(Snake snake) {
         super(snake);
+        setImage(Globals.getInstance().getImage("AmmoPickup"));
     }
 
     @Override
