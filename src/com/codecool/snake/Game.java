@@ -49,6 +49,9 @@ public class Game extends Pane {
     }
 
     private void cleanup() {
+        Globals.getInstance().globalScore = 0;
+        Globals.getInstance().ammoCurrent = 0;
+        Globals.getInstance().healthCurrent = 100;
         List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
         for (GameEntity entity: gameObjs) {
             entity.destroy();
