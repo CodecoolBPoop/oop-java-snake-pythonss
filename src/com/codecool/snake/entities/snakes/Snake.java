@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -75,8 +76,8 @@ public class Snake implements Animatable {
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
-            showGameOverAlert();
             Globals.getInstance().stopGame();
+            showGameOverAlert();
         }
     }
 
@@ -121,14 +122,16 @@ public class Snake implements Animatable {
 
     public void showGameOverAlert() {
         Alert deadAlert = new Alert(Alert.AlertType.INFORMATION);
-        deadAlert.initModality(Modality.APPLICATION_MODAL);
+
         int globalScore = Globals.getInstance().getGlobalScore();
         String globalScoreString = Integer.toString(globalScore);
         deadAlert.setTitle("You Died");
         deadAlert.setHeaderText("DEAD");
         deadAlert.setContentText("Your score is: " + globalScoreString);
+        deadAlert.initModality(Modality.APPLICATION_MODAL);
         deadAlert.show();
-
+        Stage stage = (Stage) deadAlert.getDialogPane().getScene().getWindow();
+        stage.setAlwaysOnTop(true);
     }
 
 }
