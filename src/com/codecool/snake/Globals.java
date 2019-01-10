@@ -43,13 +43,14 @@ public class Globals {
         resources = new Resources();
         resources.addImage("SnakeHead", new Image("head.png"));
         resources.addImage("SnakeBody", new Image("body.png"));
-        resources.addImage("SimpleEnemy", new Image("curly.png"));
+        resources.addImage("SimpleEnemy", new Image("intellij.png"));
         resources.addImage("HealthPickup", new Image("pharm.png"));
         resources.addImage("AmmoPickup", new Image("pycharm.png"));
         resources.addImage("SimplePickup", new Image("python.png"));
         resources.addImage("GoldenSnitch", new Image("goldd.png"));
         resources.addImage("Laser", new Image("lazzor.png"));
-        resources.addImage("ChasingEnemy", new Image("curly_1.png"));
+        resources.addImage("ChasingEnemy", new Image("curly.png"));
+        resources.addImage("ChasingEnemy_1", new Image("curly_1.png"));
         resources.addImage("InCircleEnemy", new Image("java.png"));
         resources.addImage("Background", new Image("backgroundWhite.jpg"));
     }
