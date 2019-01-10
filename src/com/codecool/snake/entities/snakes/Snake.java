@@ -134,7 +134,7 @@ public class Snake implements Animatable {
         deadAlert.setContentText("Your score is: " + globalScoreString);
 
         ButtonType restartButton = new ButtonType("Restart");
-        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType cancelButton = new ButtonType("Quit", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         deadAlert.getButtonTypes().setAll(restartButton, cancelButton);
 
@@ -144,6 +144,7 @@ public class Snake implements Animatable {
             if (result.isPresent() && result.get() == restartButton) {
                 Globals.getInstance().game.restartGame();
             } else {
+                Platform.exit();
 
             }
         });
