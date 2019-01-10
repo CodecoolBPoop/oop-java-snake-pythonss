@@ -7,6 +7,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
