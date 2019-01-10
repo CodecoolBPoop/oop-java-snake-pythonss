@@ -122,7 +122,7 @@ public class Snake implements Animatable {
         Alert deadAlert = new Alert(Alert.AlertType.INFORMATION);
         int globalScore = Globals.getInstance().getGlobalScore();
         String globalScoreString = Integer.toString(globalScore);
-        deadAlert.setTitle("You DED");
+        deadAlert.setTitle("You Died");
         deadAlert.setHeaderText("DEAD");
         deadAlert.setContentText("Your score is: " + globalScoreString);
         deadAlert.initModality(Modality.APPLICATION_MODAL);
