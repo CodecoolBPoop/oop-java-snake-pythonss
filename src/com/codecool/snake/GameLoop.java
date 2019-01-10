@@ -5,6 +5,7 @@ import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.enemies.ChasingEnemy;
 import com.codecool.snake.entities.enemies.Enemy;
+import com.codecool.snake.entities.enemies.MoveInCircleEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AmmoPowerUp;
 import com.codecool.snake.entities.powerups.HealingPowerUp;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyCode;
 
 
 import java.util.List;
+import java.util.Random;
 
 public class GameLoop {
     private Snake snake;
@@ -80,7 +82,13 @@ public class GameLoop {
                             ((Interactable) otherObj).apply(objToCheck);
                             if((objToCheck instanceof SnakeHead && otherObj instanceof Enemy) | (objToCheck instanceof Enemy && otherObj instanceof SnakeHead) |
                             (objToCheck instanceof Laser && otherObj instanceof Enemy) | (objToCheck instanceof  Enemy && otherObj instanceof Laser)) {
-                                new ChasingEnemy();
+                                if(objToCheck instanceof MoveInCircleEnemy | otherObj instanceof MoveInCircleEnemy) {
+                                    Random rnd = new Random();
+                                    double direction = rnd.nextDouble() * 360;
+                                    new MoveInCircleEnemy(direction);
+                                } else {
+                                    new ChasingEnemy();
+                                }
                             } else if (objToCheck instanceof SimplePowerUp && otherObj instanceof SnakeHead || objToCheck instanceof SnakeHead && otherObj instanceof SimplePowerUp) {
                                 Globals.getInstance().globalScore += 1;
                                 System.out.println(Globals.getInstance().globalScore);
