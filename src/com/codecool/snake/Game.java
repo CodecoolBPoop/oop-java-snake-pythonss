@@ -19,7 +19,7 @@ import java.util.List;
 
 
 public class Game extends Pane {
-    private Snake snake = null;
+    public static Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
     private Text healthButton;
     private Text ammoBar;
@@ -43,7 +43,7 @@ public class Game extends Pane {
         gameTimer.play();
     }
 
-    private void cleanup() {
+    public static void cleanup() {
         Globals.getInstance().globalScore = 0;
         Globals.getInstance().ammoCurrent = 0;
         Globals.getInstance().healthCurrent = 100;
@@ -123,7 +123,7 @@ public class Game extends Pane {
         healthButton.setTranslateX(70);
     }
 
-    private void restartGame() {
+    public void restartGame() {
         System.out.println("restart");
         Globals.getInstance().stopGame();
         cleanup();

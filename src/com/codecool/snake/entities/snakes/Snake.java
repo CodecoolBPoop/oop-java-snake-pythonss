@@ -1,12 +1,16 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
+import com.codecool.snake.Game;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Modality;
@@ -120,16 +124,33 @@ public class Snake implements Animatable {
         this.ammo += amount;
     }
 
-    public void showGameOverAlert() {
-        Alert deadAlert = new Alert(Alert.AlertType.INFORMATION);
+    public static void showGameOverAlert() {
+        Alert deadAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
         int globalScore = Globals.getInstance().getGlobalScore();
         String globalScoreString = Integer.toString(globalScore);
         deadAlert.setTitle("You Died");
         deadAlert.setHeaderText("DEAD");
         deadAlert.setContentText("Your score is: " + globalScoreString);
-        deadAlert.initModality(Modality.APPLICATION_MODAL);
-        deadAlert.show();
+
+        ButtonType restartButton = new ButtonType("Restart");
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        deadAlert.getButtonTypes().setAll(restartButton, cancelButton);
+
+        Platform.runLater(() -> {
+            Optional<ButtonType> result = deadAlert.showAndWait();
+
+            if (result.get() == restartButton) {
+                Globals.getInstance().stopGame();
+                Game.cleanup();
+                Globals.getInstance().startGame();
+            } else {
+
+            }
+        });
+
+
         Stage stage = (Stage) deadAlert.getDialogPane().getScene().getWindow();
         stage.setAlwaysOnTop(true);
     }
