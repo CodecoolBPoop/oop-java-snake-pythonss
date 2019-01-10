@@ -8,6 +8,7 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.control.Alert;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Modality;
 
 import java.util.Optional;
 
@@ -124,6 +125,7 @@ public class Snake implements Animatable {
         deadAlert.setTitle("You DED");
         deadAlert.setHeaderText("DEAD");
         deadAlert.setContentText("Your score is: " + globalScoreString);
+        deadAlert.initModality(Modality.APPLICATION_MODAL);
         deadAlert.show();
 
     }
