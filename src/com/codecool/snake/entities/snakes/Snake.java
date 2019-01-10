@@ -14,7 +14,7 @@ import java.util.Optional;
 public class Snake implements Animatable {
     private static final float speed = 2;
     private int health = 100;
-    private int ammo = 0;
+    private int ammo = 5;
     private int weaponCooldown = 30;
 
     private SnakeHead head;
