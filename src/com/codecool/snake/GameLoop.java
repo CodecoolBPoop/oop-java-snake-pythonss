@@ -8,6 +8,7 @@ import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.enemies.MoveInCircleEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.AmmoPowerUp;
+import com.codecool.snake.entities.powerups.GoldenSnitch;
 import com.codecool.snake.entities.powerups.HealingPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.projectiles.Laser;
@@ -55,6 +56,8 @@ public class GameLoop {
                     ((Animatable) gameObject).step();
                 } else if (gameObject instanceof ChasingEnemy) {
                     ((ChasingEnemy) gameObject).step(snake);
+                } else if (gameObject instanceof GoldenSnitch) {
+                    ((GoldenSnitch) gameObject).step(snake);
                 }
             }
             checkCollisions();
@@ -93,8 +96,10 @@ public class GameLoop {
                                 Globals.getInstance().globalScore += 1;
                                 System.out.println(Globals.getInstance().globalScore);
                                 int rand = (int)(Math.random()* 9 + 1);
-                                if (rand > 2) {
+                                if (rand > 4) {
                                     new SimplePowerUp(snake);
+                                } else if (rand == 3 || rand == 4) {
+                                    new GoldenSnitch(snake);
                                 } else if (rand == 2) {
                                     new HealingPowerUp(snake);
                                 } else if (rand == 1) {
