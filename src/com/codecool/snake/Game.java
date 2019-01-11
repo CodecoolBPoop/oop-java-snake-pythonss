@@ -34,7 +34,7 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(3, 1, 6);
+        spawnEnemies(2, 1, 5);
         spawnPowerUps(2);
 
         GameLoop gameLoop = new GameLoop(snake);
@@ -69,7 +69,7 @@ public class Game extends Pane {
         for(int i = 0; i < numberOfChasingEnemy; ++i) { new ChasingEnemy(); }
         for(int i = 0; i < numberOfMoveInCircleEnemy; ++i) {
             new MoveInCircleEnemy(direction);
-            direction += 60;
+            direction += 72;
         }
     }
 
